@@ -18,7 +18,6 @@ class Migration(migrations.Migration):
                 ('region', models.CharField(max_length=10)),
                 ('gu', models.CharField(max_length=10)),
                 ('dong', models.CharField(max_length=10)),
-                ('address', models.CharField(max_length=100)),
                 ('title', models.CharField(max_length=20)),
                 ('image', models.CharField(max_length=200)),
                 ('context', models.TextField()),

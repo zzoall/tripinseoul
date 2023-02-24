@@ -1,4 +1,5 @@
 from django.shortcuts import render ,get_object_or_404
+from django.contrib.auth import authenticate
 from .models import FoodRec
 
 # Create your views here.
@@ -42,3 +43,14 @@ def portfolio_overview(request):
 
 def pricing(request):
     return render(request,'main/pricing.html')
+
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            print("인증성공")
+        else:
+            print("인증실패")
+    return render(request,'base/Login.html')
