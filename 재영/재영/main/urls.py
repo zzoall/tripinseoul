@@ -20,7 +20,8 @@ urlpatterns = [
     path('portfolio-overview',views.portfolio_overview, name='portfolio-overview'),
     path('pricing',views.pricing, name='pricing'),
     path('accounts/', include('accounts.urls')),
-    path('login', views.login_view, name='login') 
-    
+    path('login', views.login_view, name='login'), 
+    path('signup', views.signup, name='signup'),
+    path('logout', views.logout, name='logout'),
     
 ]
