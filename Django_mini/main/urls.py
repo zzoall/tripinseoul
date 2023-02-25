@@ -15,7 +15,6 @@ urlpatterns = [
     path('faq',views.faq, name='faq'),
     path('portfolio-item',views.portfolio_item, name='portfolio-item'),
     path('portfolio-overview',views.portfolio_overview, name='portfolio-overview'),
-    path('pricing',views.pricing, name='pricing'),
 
    
     

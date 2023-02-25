@@ -40,5 +40,4 @@ def portfolio_overview(request):
     return render(request,'main/portfolio-overview.html')
 
 
-def pricing(request):
-    return render(request,'main/pricing.html')
+
