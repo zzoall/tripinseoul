@@ -1,4 +1,4 @@
-from django.shortcuts import render ,get_object_or_404
+from django.shortcuts import render ,get_object_or_404,redirect
 from django.contrib.auth.models import User
 from .models import FoodRec
 from django.views.decorators.csrf import csrf_exempt
@@ -48,30 +48,32 @@ def pricing(request):
 
 @csrf_exempt
 def signup(request):
-    if request.method == 'post':
-        if request.post["password1"] == request.post["password2"]:
-            user = User.objects.create_user(
-                username=request.post["username"],password=request.post["password1"])
+    if request.method == "POST":
+        if request.POST["password"] == request.POST["password"]:
+            user = User.objects.create_user( 
+                username=request.POST["username"], 
+                email=request.POST["email"], 
+                password=request.POST["password"]) 
             auth.login(request,user)
-            return redirect('home')
-        return render(request,"base/signup.html")
+            return redirect("login")
+        return render(request,"base/sigup.html")
 
     return render(request, 'base/signup.html')
             
 @csrf_exempt
 def login_view(request):
     if request.method == "POST":
-        id = request.POST["id"]
-        pw = request.POST["pw"]
-        user = auth.authenticate(request, id=id, pw=pw)
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = auth.authenticate(request, username=username, password=password)
         if user is not None:
             auth.login(request, user)
             return redirect('home')
         else:
-            return render(requset, 'base/Login.html', {'error': '비번 틀림'})
+            return render(request, 'base/Login.html', {'error': '비번 틀림'})
     else:        
         return render(request,'base/Login.html')
 
 def logout(request):
     auth.logout(request)
-    return redirect("{%url 'main:index' %}")
+    return redirect("login")

@@ -13,12 +13,12 @@
         <h1></h1>
         <form  action="" method = "POST">{ % csrf_token %}
             <div class="int-area">
-                <input type="text" name="id" id="id"
+                <input type="text" name="username" 
                 autocomplete="off" required>
                 <label for="id">USER NAME</label>
             </div>
             <div class="int-area">
-                <input type="password" name="pw" id="pw"
+                <input type="password" name="password" 
                 autocomplete="off" required>
                 <label for="pw">PASSWORD</label>
             </div>
@@ -28,7 +28,7 @@
             </div>
         </form>
         <div class="caption">
-            <a href="">Forgot Password?</a>
+            <a href="/signup">아이디가 없으신가요?</a>
         </div>
     </section>
 

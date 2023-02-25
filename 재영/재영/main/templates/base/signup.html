@@ -1,24 +1,17 @@
 
-
-{% block contents %}
 <div class="container">
-    <h1>회원 가입</h1>
-
-    <form action="">
+    <h1>회원 가입 페이지</h1>
+    <form action="" method="post">
         {% csrf_token %}
-        Username:
-        <br>
-        <input name="username"type="text">
-        <br>
-        Password:
-        <br>
-        <input  name="password1" type="password">
-        Confirm Password:
-        <br>
+        <p>이름</p>
+        <input name="username" type="text">
+        <p>비밀번호</p>
+        <input name="password" type="password">
+        <p>비밀번호 재입력</p>
         <input name="password2" type="password">
-        <br><br>
-        <input type="submit" class="btn btn-primary" value="sign up">
-    </form>
+        <p>이메일</p>
+        <input name="email" type="text">
+        <input type="submit" class="btn btn-primary" value="회원가입">
 
+    </form>
 </div>
-{% endblock %}
