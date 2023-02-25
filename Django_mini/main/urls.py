@@ -5,7 +5,7 @@ from . import views
 app_name="main"
 urlpatterns = [
     path('', views.index, name='index'),
-    
+    path('index',views.index,name='index2'),
     path('food_detail/<int:pk>/',views.food_detail,name='food_detail'),
     
     path('about',views.about, name='about'),
@@ -17,7 +17,7 @@ urlpatterns = [
     path('portfolio-overview',views.portfolio_overview, name='portfolio-overview'),
     path('pricing',views.pricing, name='pricing'),
 
-    
+   
     
     
     
