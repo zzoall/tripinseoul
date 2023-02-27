@@ -2,26 +2,38 @@
 {% block content %}
 
 <!-- About section one-->
-{% for fr in foodrec %}
+{% for post in posts %}
 <section class="py-5 bg-light" id="scroll-target">
     <div class="container px-5 my-5">
         <div class="row gx-5 align-items-center">
             <div class="col-lg-6">
-                <h2>
-                <a href="{% url 'main:food_detail' pk=fr.pk %}">{{fr.title}}</a>
-                   {{fr.pk}}</h2>
-                <img class="img-fluid rounded mb-5 mb-lg-0"
-                    src="{{fr.image}}" alt="..." / width='400'></div>
+                {% if post.header_img %}
+                <a href="{% url 'main:food_detail' pk=post.pk %}">
+                    <img src="{{ post.header_img.url }}" class="img-fluid rounded mb-5 mb-lg-0" alt="..." width="400">
+                </a>
+                {% endif %}
+            </div>
             <div class="col-lg-6">
-                <h2 class="fw-bolder">Our founding</h2>
-                <p class="lead fw-normal text-muted mb-0">{{fr.region}}의 {{fr.gu}}구 {{fr.dong}} 맛집입니다 </p>
+                <h2 class="fw-bolder">{{ post.title }}</h2>
+                <p class="lead fw-normal text-muted mb-0">{{ post.region }}시 {{ post.gu }}구 {{ post.dong }}동 </p>
             </div>
         </div>
     </div>
 </section>
 {% endfor %}
+
+{# pagenation #}
+
+    {% if page_obj.has_previous %}
+    <a href="?page={{page_obj.previous_page_number}}">Prev</a>
+    {% endif %}
+    Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+    {% if page_obj.has_next %}
+        <a href="?page={{page_obj.next_page_number}}">Next</a>
+    {% endif %}
+
 <!-- Team members section-->
-<section class="py-5 bg-light">
+<!-- <section class="py-5 bg-light">
     <div class="container px-5 my-5">
         <div class="text-center">
             <h2 class="fw-bolder">Our team</h2>
@@ -61,13 +73,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Call to Action-->
-    <div class="card text-white bg-secondary my-5 py-4 text-center">
+    <!-- <div class="card text-white bg-secondary my-5 py-4 text-center">
         <div class="card-body"><p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p></div>
-    </div>
+    </div> -->
     <!-- Content Row-->
-    <div class="row gx-4 gx-lg-5">
+    <!-- <div class="row gx-4 gx-lg-5">
         <div class="col-md-4 mb-5">
             <div class="card h-100">
                 <div class="card-body">
@@ -97,6 +109,6 @@
         </div>
     </div>
 </div>
-</section>
+</section> -->
     
 {% endblock %}
