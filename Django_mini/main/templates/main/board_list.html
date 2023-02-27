@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+{% block content %}
+            <!-- Page Content-->
+            <section class="py-5">
+                <div class="container px-5 my-5">
+                    <div class="text-center mb-5">
+                        <h1 class="fw-bolder">Frequently Asked Questions</h1>
+                        <p class="lead fw-normal text-muted mb-0">How can we help you?</p>
+                    </div>
+                    <div class="row gx-5">
+                        <div class="col-xl-8">
+                            <!-- FAQ Accordion 1-->
+                            <h2 class="fw-bolder mb-3">게시판 입니다</h2>
+                            {% comment %} {%for board in boards%} {% endcomment %}
+                 
+                              <table class="table">
+                                <thead class="thead-light">
+                                  <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col">작성자</th>
+                                    <th scope="col">제목</th>
+                                    <th scope="col"></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    {%for board in boards%}
+                                
+                                  <tr>
+                                    <th scope="row">{{board.pk}}</th>
+                                    <td>{{board.author}}</td>
+                                    <td>{{board.title}}</td>
+                                    <td><a href="{%url 'main:board_detail' pk=board.pk %}"><button value=""> 글읽기</button></a></td>
+                                  </tr>
+
+                                
+                              
+                                    {% endfor%}
+                                </tbody>
+                              </table>
+                 
+                        </div>
+                       
+                    </div>
+                </div>
+            </section>
+
+{% endblock %}
